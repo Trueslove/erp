@@ -1,0 +1,77 @@
+.home-header {
+  height: 312rpx;
+  width: 100%;
+  background: #398BFB;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.home-header-img {
+  width: 200rpx;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.home-header-img > image {
+  height: 80rpx;
+  width: 80rpx;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #FFFFFF;
+  margin-bottom: 14rpx;
+}
+.home-header-img > text {
+  width: 200rpx;
+  height: 44rpx;
+  font-size: 32rpx;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: #FFFFFF;
+  line-height: 44rpx;
+  text-align: center;
+}
+.home-list {
+  width: 630rpx;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  background: #FFFFFF;
+  border-radius: 16px;
+  margin: 20rpx auto;
+  padding: 30rpx 24rpx 58rpx 30rpx;
+}
+.home-list .home-item {
+  width: 304rpx;
+  height: 112rpx;
+  background: #EFF4FD;
+  text-align: center;
+  margin-bottom: 16rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.home-list .home-item:nth-child(9) .home-icon {
+  width: 32rpx;
+  height: 32rpx;
+}
+.home-list .home-icon {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 18rpx;
+}
+.home-list .home-item-text {
+  font-size: 32rpx;
+  font-family: PingFang-SC-Medium, PingFang-SC;
+  font-weight: 500;
+  color: #398BFB;
+}
+.home-list .home-title {
+  width: 100%;
+  height: 40rpx;
+  font-size: 28rpx;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: #303133;
+  line-height: 40rpx;
+  margin-bottom: 24rpx;
+}

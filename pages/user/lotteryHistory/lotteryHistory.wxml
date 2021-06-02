@@ -1,0 +1,17 @@
+<view>
+    <view class="business-tab lottery--header" wx:if="{{typeNum || typeNum == 0}}">
+        <tab tabItem="{{tabItem}}" defalutIndex="{{typeNum}}" bind:tabChange="changeTab"/>
+    </view>
+    <view class="lottery-history {{typeNum || typeNum == 0 ? 'lottery-margin' : ''}}">
+        <view class="lottery-item" wx:for="{{listItem}}" wx:key="*this">
+            <image class="lottery-image" src="{{item.goodsImg || '../../../images/lottery.png'}}" />
+            <view class="lottery-content">
+                <text class="lottery-text font28 lottery-title">{{item.goodsName}}</text>
+                <text class="lottery-text font24">{{item.merchName}}</text>
+                <text class="lottery-text font24" style="font-weight: 500;">{{type==0 ? '有效日期' : '兑换日期'}}：{{item.dateTime}}</text>
+            </view>
+        </view>
+        <view class="no-more" wx:if="{{noMore}}">我是有底线的</view>
+    </view>
+    <null isShowNull="{{isShowNull}}"/>
+</view>

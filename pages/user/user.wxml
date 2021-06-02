@@ -1,0 +1,75 @@
+<view class="user">
+    <view class="user-header" catchtap = "handleToPageMap">
+        <image class="user-header-img" src="../../images/map1.png" />
+        <text class="font24">地图找客户</text>
+    </view>
+    <view class="user-content">
+        <view class="user-con-detail">
+            <h2 class="font28">客户概况</h2>
+            <view class="user-con-item user-con-top" data-type="0" catchtap = "handleToPage">
+                <text class="font24">客户总数量</text>
+                <view class="user-con-price-wap">
+                    <text class="font36" style="font-weight: bold;">{{customerInfo.customerQtySum}} </text>
+                    <text class="font28">人</text>
+                </view>
+            </view>
+            <view class="user-con-top user-con-flex">
+                <view class="user-con-item" data-type="1" catchtap = "handleToPage">
+                    <text class="font24">今日客户</text>
+                    <view class="user-con-price-wap">
+                        <text class="font36" style="font-weight: bold;">{{customerInfo.customerQtyDay}} </text>
+                        <text class="font28">人</text>
+                    </view>
+                </view>
+                <view class="user-con-item" data-type="2" catchtap = "handleToPage">
+                    <text class="font24">本周客户</text>
+                    <view class="user-con-price-wap">
+                        <text class="font36" style="font-weight: bold;">{{customerInfo.customerQtyWeek}} </text>
+                        <text class="font28">人</text>
+                    </view>
+                </view>
+                <view class="user-con-item" data-type="3" catchtap = "handleToPage">
+                    <text class="font24">本月客户</text>
+                    <view class="user-con-price-wap">
+                        <text class="font36" style="font-weight: bold;">{{customerInfo.customerQtyMonth}} </text>
+                        <text class="font28">人</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+
+        <view class="user-con-detail">
+            <h2 class="font28">兑奖概况</h2>
+            <view class="user-con-item user-con-top" data-type="0" catchtap = "handleToPageLottery">
+                <text class="font24">兑奖总数量</text>
+                <view class="user-con-price-wap">
+                    <text class="font36" style="font-weight: bold;">{{winningInfo.convertQtySum}} </text>
+                    <text class="font28">次</text>
+                </view>
+            </view>
+            <view class="user-con-top user-con-flex">
+                <view class="user-con-item" data-type="1" catchtap = "handleToPageLottery">
+                    <text class="font24">今日兑奖</text>
+                    <view class="user-con-price-wap">
+                        <text class="font36" style="font-weight: bold;">{{winningInfo.convertQtyDay}} </text>
+                        <text class="font28">次</text>
+                    </view>
+                </view>
+                <view class="user-con-item" data-type="0" catchtap = "handleToPageLottery">
+                    <text class="font24">本周兑奖</text>
+                    <view class="user-con-price-wap">
+                        <text class="font36" style="font-weight: bold;">{{winningInfo.convertQtyWeek}} </text>
+                        <text class="font28">次</text>
+                    </view>
+                </view>
+                <view class="user-con-item" data-type="3" catchtap = "handleToPageLottery">
+                    <text class="font24">本月兑奖</text>
+                    <view class="user-con-price-wap">
+                        <text class="font36" style="font-weight: bold;">{{winningInfo.convertQtyMonth}} </text>
+                        <text class="font28">次</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

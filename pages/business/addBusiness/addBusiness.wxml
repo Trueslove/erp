@@ -1,0 +1,66 @@
+<!--pages/business/addBusiness/addBusiness.wxml-->
+<view class="add-business-wap">
+    <view class="add-business">
+        <view class="add-com-logo">
+            <view class="add-com-title add-com-start add-tit-img">商家logo</view>
+            <van-uploader max-count="1" accept="image" disabled="{{info.id}}" file-list="{{ fileList }}" bind:delete="handleUploaderDelete" bind:after-read="afterRead" >
+                <view class="add-com-uploader">
+                    <van-icon name="plus" size="18" color="#9C9C9C"/>
+                    <text class="add-uploader-text">图片</text>
+                </view>
+            </van-uploader>
+        </view>
+        <view>
+            <view class="add-cell-wap add-cell-input-wap">
+                <text class="add-com-title add-com-start add-com-left">商家名称</text>
+                <input class="add-cell-input" disabled="{{info.id}}" value="{{dataForm.merchName}}" data-key="merchName" bindinput="changeInputValue" placeholder="请输入商家名称" placeholder-style="color:#909399;"/>
+            </view>
+            <view class="add-cell-wap add-cell-input-wap">
+                <text class="add-com-title add-com-start add-com-left">行业分类</text>
+                <input class="add-cell-input" disabled="{{info.id}}" value="{{dataForm.industryName}}" data-key="industryName" bindinput="changeInputValue" placeholder="请输入行业分类" placeholder-style="color:#909399;"/>
+            </view>
+            <view class="add-cell-wap add-cell-input-wap">
+                <text class="add-com-title add-com-start add-com-left">联系人</text>
+                <input class="add-cell-input" disabled="{{info.id}}" value="{{dataForm.linkMan}}" data-key="linkMan" bindinput="changeInputValue" placeholder="请输入联系人" placeholder-style="color:#909399;"/>
+            </view>
+            <view class="add-cell-wap add-cell-input-wap">
+                <text class="add-com-title add-com-start add-com-left">联系电话</text>
+                <input class="add-cell-input" disabled="{{info.id}}" value="{{dataForm.linkNo}}" data-key="linkNo" bindinput="changeInputValue" placeholder="请输入联系电话" placeholder-style="color:#909399;"/>
+            </view>
+            <view class="add-cell-wap add-cell-input-wap">
+                <text class="add-com-title add-com-start add-com-left">真实姓名</text>
+                <input class="add-cell-input" disabled="{{info.id}}" value="{{dataForm.applyRealName}}" data-key="applyRealName" bindinput="changeInputValue" placeholder="请输入真实姓名" placeholder-style="color:#909399;"/>
+            </view>
+            <view class="add-cell-wap add-cell-input-wap">
+                <text class="add-com-title add-com-left">营业时间</text>
+                <input class="add-cell-input" disabled="{{info.id}}" value="{{dataForm.businessHours}}" data-key="businessHours" bindinput="changeInputValue" placeholder="请输入营业时间" placeholder-style="color:#909399;"/>
+            </view>
+            <view class="add-cell-wap add-cell-input-wap">
+                <text class="add-com-title add-com-left">商家地址</text>
+                <input class="add-cell-input" disabled="{{info.id}}" value="{{dataForm.merchAddress}}" data-key="merchAddress" bindconfirm="handleFormLatLng"  bindinput="changeInputValue" placeholder="请输入商家地址" placeholder-style="color:#909399;"/>
+            </view>
+        </view>
+    </view>
+    <map id="mymap" 
+        class="add-business-map"
+        longitude="{{dataForm.merchCoordinatesLongitude}}"
+        latitude="{{dataForm.merchCoordinatesLatitude}}" 
+        scale="14" 
+        markers="{{markers}}"
+        wx:if="{{!info.id}}"
+        bindtap="handleClickMap" show-location>
+    </map>
+    <view class="add-cell-wap add-cell-scan-wap" wx:if="{{!info.id}}">
+        <view>
+            <text class="add-com-title add-com-start add-com-left">绑定码</text>
+            <text class="add-com-title add-scan-text" wx:if="{{scanResult == null}}">点击扫一扫</text>
+            <text class="add-com-title add-scan-text" wx:if="{{scanResult == 'success'}}" style="color: #05C160;">您已绑定成功</text>
+            <text class="add-com-title add-scan-text" wx:if="{{scanResult == 'fail'}}" style="color: #FF0000;">绑定失败，请重新绑定</text>
+        </view>
+        <image class="add-business-scan" catchtap="handleScanCode" src="../../../images/scan.png" />
+    </view>
+    <view wx:if="{{!info.id}}" class="btn-wap">
+        <button class="btn" bindtap="handleConfirm">确认</button>
+    </view>
+</view>
+

@@ -1,0 +1,50 @@
+<!--pages/user/customerMap/customerMap.wxml-->
+<view class="page-body">
+  <view class="page-section page-section-gap">
+    <map
+      id="myMap"
+      style="width:100%; height:100vh;"
+      latitude="{{latitude}}"
+      longitude="{{longitude}}"
+      bindcallouttap="callouttap"
+      markers="{{markers}}"
+      scale="16"
+    >
+      <cover-view slot="callout">
+        <block wx:for="{{customCalloutMarkerIds}}" wx:key="*this">
+          <cover-view  class="customCallout" marker-id="{{item.id}}" >
+            <cover-view class="content"> 
+              {{item.name}}个
+            </cover-view>
+          </cover-view>
+        </block>
+      </cover-view>
+    </map>
+  </view>
+  <van-popup
+      show="{{customerShow }}"
+      round
+      position="bottom"
+      custom-style="height:80%"
+      z-index="200"
+    >
+        <view class="customer_view">
+          <view class="customer_info_head">
+            <label>{{activeInfo.merchName}}</label>
+            <image src="/images/close2.png" bindtap="onClose"></image>
+          </view>
+          <scroll-view scroll-y="true" style="height: 700rpx" bindscrolltolower="handleBindscrolltolower">
+            <view class="customer-info" wx:for="{{listItem}}" wx:key="*this" data-id="{{item.userId}}" bindtap="handleToPageDetail">
+              <image class="customer-info-img" src="{{item.userPhoto}}"/>
+              <view class="customer-info-right">
+                  <view class="customer-info-title">{{item.userName}} {{item.userPhone}}</view>
+                  <text class="customer-info-text">商家名称： {{item.merchName}}</text>
+              </view>
+            </view>
+            <view class="no-more" wx:if="{{noMore}}">我是有底线的</view>
+          </scroll-view>
+        </view>
+      <null isShowNull="{{isShowNull}}"/>
+    </van-popup>
+</view>
+

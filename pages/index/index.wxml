@@ -1,0 +1,16 @@
+<view class="home">
+    <view class="home-header">
+        <view class="home-header-img" wx:if="{{userInfo.createdTime}}">
+            <image src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fc-ssl.duitang.com%2Fuploads%2Fitem%2F202004%2F07%2F20200407202133_RcwvU.thumb.400_0.jpeg&refer=http%3A%2F%2Fc-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1617412323&t=51656fb3bbcbedfdf7b8c49a60974109" />
+            <text class="home-text">{{userInfo.userName || '暂无'}}</text>
+        </view>
+        <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" style="width: 300rpx" wx:else>登录</button>
+    </view>
+    <view class="home-list">
+        <view class="home-title">常用应用</view>
+        <view class="home-item" wx:for="{{typeItem}}" wx:key="*this" data-url="{{item.url}}" bindtap="handleToPage">
+            <image class="home-icon" src="../../images/home/{{index + 1}}.png"/>
+            <text class="home-item-text">{{item.name}}</text>
+        </view>
+    </view>
+</view>

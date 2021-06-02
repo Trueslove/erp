@@ -1,0 +1,142 @@
+<!--pages/commodity/addCommodity/addCommodity.wxml-->
+<view class="add-commodity">
+    <view class="add-com-top">
+        <view class="add-com-img">
+            <view class="add-com-title add-com-start add-tit-img">图片和标题</view>
+            <view>
+                <van-uploader bind:delete="handleUploaderDelete" disabled="{{jumpType == 'see'}}" data-key="goodsImgfileList" data-keyimg="goodsImg" file-list="{{ goodsImgfileList }}" bind:after-read="afterRead"  max-count="1" accept="media">
+                    <view class="add-com-uploader">
+                        <van-icon name="plus" size="18" color="#9C9C9C"/>
+                        <text class="add-uploader-text">图片或视频</text>
+                    </view>
+                </van-uploader>
+                <text class="add-num-uploader">1张</text>
+            </view>
+            <view class="add-com-textarea-wap">
+                <textarea disabled="{{jumpType == 'see'}}" value="{{pageData.goodsName}}" data-key="goodsName" bindinput="handleChangeInput" class="add-com-textarea" placeholder="标题示例：【现货】夏季新款 韩版碎花雪纺" placeholder-style="font-size:28rpx;color:#B5B5B5;"></textarea>
+            </view>
+            <view class="add-cell-wap">
+                <text class="add-com-start add-com-title">类目</text>
+                <view class="add-cell-right">
+                    <text data-type="categoryCode" catchtap="onClick" class="add-com-title {{pageData.categoryCode ? '' : 'add-cell-right-text'}}">{{pageData.categoryName || '请选择商品类目'}}</text>
+                    <van-icon name="arrow" size="16" color="#949DA6"/>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="add-com-pot">
+        <view class="add-com-img">
+            <view class="add-com-title add-com-start add-tit-img">图文详情</view>
+            <view>
+                <van-uploader file-list="{{ twFileList }}" disabled="{{jumpType == 'see'}}" bind:delete="handleUploaderDelete" data-key="twFileList" data-keyimg="twImg" bind:after-read="afterReadMore" multiple="true"  max-count="8" accept="media">
+                    <view class="add-com-uploader">
+                        <van-icon name="plus" size="18" color="#9C9C9C"/>
+                        <text class="add-uploader-text">图片或视频</text>
+                    </view>
+                </van-uploader>
+                <text class="add-num-uploader">8张</text>
+            </view>
+            <!-- <view class="add-com-textarea-wap" style="border-bottom:none;">
+                <textarea data-key="twDetail" bindinput="handleChangeInput" value="{{twDetail}}" class="add-com-textarea" placeholder="可以输入主要内容如：特价大卖" placeholder-style="font-size:28rpx;color:#B5B5B5;"></textarea>
+            </view> -->
+        </view>
+    </view>
+    <view class="add-com-price">
+        <view class="add-cell-wap add-cell-input-wap">
+            <text class="add-com-title add-com-start">补贴金额</text>
+            <input data-key="twDetail" type="digit" disabled="{{jumpType == 'see'}}" value="{{pageData.subsidyAmt}}" data-key="subsidyAmt" bindinput="handleChangeInput" class="add-cell-input" placeholder="请填写补贴金额" maxlength="20" placeholder-style="color:#909399;"/>
+            <text class="add-cell-input-price">元</text>
+        </view>
+        <view class="add-cell-wap add-cell-input-wap">
+            <text class="add-com-title add-com-start">支付金额</text>
+            <input class="add-cell-input" type="digit" disabled="{{jumpType == 'see'}}" bindinput="handleChangeInput" value="{{pageData.payPrice}}" data-key="payPrice" placeholder="请填写支付金额" maxlength="20" placeholder-style="color:#909399;"/>
+            <text class="add-cell-input-price">元</text>
+        </view>
+    </view>
+    <view class="add-com-btm">
+        <view class="add-cell-wap">
+            <text class="add-com-title add-com-start">兑换方式</text>
+            <view class="add-cell-right">
+                <text data-type="convertType" data-value="convertName" catchtap="onClick" class="add-com-title {{pageData.convertType ? '' : 'add-cell-right-text'}}">{{pageData.convertName || '请选择兑换方式'}}</text>
+                <van-icon name="arrow" size="16" color="#949DA6"/>
+            </view>
+        </view>
+        <view class="add-cell-wap">
+            <text class="add-com-title add-com-start">兑换周期</text>
+            <view class="add-cell-right">
+                <text data-type="convertCycleType" data-value="cycleUnitName" catchtap="onClick" class="add-com-title {{pageData.convertCycleType ? '' : 'add-cell-right-text'}}">{{pageData.cycleUnitName || '请选择兑换周期'}}</text>
+                <van-icon name="arrow" size="16" color="#949DA6"/>
+            </view>
+        </view>
+        <view class="add-cell-wap">
+            <text class="add-com-title add-com-start">核销商家</text>
+            <view class="add-cell-right">
+                <text data-type="merchCode" data-value="merchName" catchtap="onClick" class="add-com-title {{pageData.merchCode ? '' : 'add-cell-right-text'}}">{{pageData.merchName || '请选择核销商家'}}</text>
+                <van-icon name="arrow" size="16" color="#949DA6"/>
+            </view>
+        </view>
+        <view class="add-cell-wap">
+            <text class="add-com-title add-com-start">商品类型</text>
+            <view class="add-cell-right">
+                <text data-type="goodsType" data-value="goodsTypeName" catchtap="onClick" class="add-com-title {{pageData.goodsTypeName ? '' : 'add-cell-right-text'}}">{{pageData.goodsTypeName || '请选择商品类型'}}</text>
+                <van-icon name="arrow" size="16" color="#949DA6"/>
+            </view>
+        </view>
+        <view class="add-cell-wap" wx:if="{{pageData.goodsType == '1'}}">
+            <text class="add-com-title add-com-start">引流商家</text>
+            <view class="add-cell-right">
+                <text data-type="drainageCode" data-value="drainageName" catchtap="onClick" class="add-com-title {{pageData.drainageCode ? '' : 'add-cell-right-text'}}">{{pageData.drainageName || '请选择引流商家'}}</text>
+                <van-icon name="arrow" size="16" color="#949DA6"/>
+            </view>
+        </view>
+    </view>
+    <view class="add-com-price" wx:if="{{pageData.goodsType == '1'}}">
+        <view class="add-cell-wap add-cell-input-wap">
+            <text class="add-com-title add-com-start">引流佣金</text>
+            <input type="digit" data-key="divideInto" disabled="{{jumpType == 'see'}}" bindinput="handleChangeInput" value="{{pageData.divideInto}}" class="add-cell-input" placeholder="请填写引流佣金" maxlength="30" placeholder-style="color:#909399;"/>
+            <text class="add-cell-input-price">元</text>
+        </view>
+    </view>
+
+    <van-action-sheet show="{{ typeShow }}">
+        <van-picker 
+            columns="{{ typeItem }}"
+            show-toolbar
+            title="分类选择"
+            bind:cancel="onCancel"
+            bind:confirm="onConfirm" 
+            bind:change="onChange" />
+    </van-action-sheet>
+    <van-action-sheet
+        show="{{ showType }}"
+        actions="{{ listItem }}"
+        color="#398BFB"
+        cancel-text="取消"
+        bind:cancel="handleCancel"
+        bind:select="handleSelect"
+    />
+    <van-popup
+      show="{{ show }}"
+      round
+      position="bottom"
+      custom-style="height:80%"
+      z-index="200"
+    >
+        <view class="customer_view">
+          <view class="customer_info_head">
+            <label>选择商家</label>
+            <image src="/images/close2.png" bindtap="onClose"></image>
+          </view>
+          <scroll-view scroll-y="true" style="height: 700rpx" bindscrolltolower="handleBindscrolltolower">
+            <view class="add-comm-info" wx:for="{{listItem}}" wx:key="*this" data-info="{{item}}" bindtap="handleSelect">
+                <text class="add-comm-info-text">{{item.name}}</text>
+            </view>
+            <view class="no-more" wx:if="{{noMore}}" style="color: #cecece;margin-top:20rpx">暂无更多数据</view>
+          </scroll-view>
+        </view>
+      <null isShowNull="{{isShowNull}}"/>
+    </van-popup>
+    <view class="btn-wap">
+        <button class="btn" wx:if="{{jumpType != 'see'}}" catchtap="handleRelease">发布商品</button>
+    </view>
+</view>

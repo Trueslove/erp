@@ -1,0 +1,135 @@
+<view class="acitvity-detail">
+    <view class="acitvity-d-wap">
+        <view class="activity-d-cell">
+            <view class="activity-d-star font28">活动名称</view>
+            <input disabled="{{activityId}}" class="activity-d-value font28" value="{{pageData.activityName}}" data-key="activityName" bindinput="changeInputValue" placeholder="请输入活动名称" placeholder-class="place-holder"/>
+        </view>
+        <view class="activity-d-cell">
+            <view class="activity-d-star font28">活动商家</view>
+            <view class="activity-d-flex font28" data-key="merchName" data-value="merchId" data-type="merch" catchtap = "onClick">
+                <view class="{{pageData.merchName ? '' : 'activity-d-txt'}}">{{pageData.merchName || '请选择商家'}}</view>
+                <van-icon name="arrow" size="16" color="#949DA6"/>
+            </view>
+        </view>
+        <view class="activity-d-cell">
+            <view class="activity-d-star font28">活动范围</view>
+            <input disabled="{{activityId}}" type="digit" class="activity-d-value font28" value="{{pageData.activityScope}}" data-key="activityScope" bindinput="changeInputValue" placeholder="请输入活动范围" placeholder-class="place-holder"/>
+        </view>
+        <view class="activity-d-cell">
+            <view class="activity-d-star font28">活动描述</view>
+            <textarea placeholder-class="place-holder"
+                disabled="{{activityId}}" 
+                class="activity-d-textarea font28" 
+                value="{{pageData.activityDescription}}" 
+                data-key="activityDescription" 
+                bindinput="changeInputValue" placeholder="请输入活动描述" 
+            ></textarea>
+        </view>
+    </view>
+
+    <view class="acitvity-d-wap">
+        <view class="activity-d-cell">
+            <view class="activity-d-label font28">活动上架</view>
+            <van-switch
+                custom-class="activity-d-switch"
+                node-class="activity-node-switch"
+                checked="{{ pageData.isInactive == 1 }}"
+                active-color="#398BFB"
+                size="28"
+                inactive-color="#909399"
+                bind:change="onChange"
+                />
+        </view>
+    </view>
+
+    <view class="acitvity-sp-wap" wx:for="{{doGoodsActivityList}}" wx:key="index">
+        <view class="acitvity-d-sp">
+             <view class="activity-sp-cell">
+                <view class="activity-d-label activity-d-star font28">商品配置</view>
+                <view class="activity-sp-value font28" catchtap="onClick" data-key="goodsName" data-value="goodsCode" data-type="goods" data-index="{{index}}">
+                    <view class="{{item.goodsName ? '' : 'activity-d-txt'}}">{{item.goodsName || '选奖品'}}</view>
+                    <van-icon name="arrow" size="16" color="#949DA6"/>
+                </view>
+            </view>
+            <view class="add-cell-wap add-cell-input-wap">
+                <text class="add-com-title activity-d-star font28">活动中奖</text>
+                <input disabled="{{activityId}}" type="digit" bindinput="changeValueMerch" data-index="{{index}}" data-key="winningProbability" value="{{item.winningProbability}}" class="{{!activityId ? 'add-cell-input' : 'activity-cell-input'}} font28" placeholder="请填写活动中奖率" maxlength="3" placeholder-class="place-holder"/>
+                <text class="add-cell-input-price">%</text>
+            </view>
+            <view class="add-cell-wap add-cell-input-wap">
+                <text class="add-com-title activity-d-star font28">商品数量</text>
+                <input type="number" disabled="{{activityId}}" bindinput="changeValueMerch" data-index="{{index}}" data-key="goodsUpper" value="{{item.goodsUpper}}" class="{{!activityId ? 'add-cell-input' : 'activity-cell-input'}} font28" placeholder="请填写商品数量" maxlength="30" placeholder-class="place-holder"/>
+                <text class="add-cell-input-price">件</text>
+            </view>
+            <view class="add-cell-wap add-cell-input-wap">
+                <text class="add-com-title activity-d-star font28">奖项描述</text>
+                <input disabled="{{activityId}}" bindinput="changeValueMerch" data-index="{{index}}" data-key="levelName" value="{{item.levelName}}" class="{{!activityId ? 'add-cell-input' : 'activity-cell-input'}} font28" placeholder="请填写奖项描述" maxlength="30" placeholder-class="place-holder"/>
+            </view>
+        </view>
+        <image catchtap="onClick" data-type="delete" data-index="{{index}}" wx:if="{{!activityId}}" class="acitvity-sp-delete" src="../../../images/delete.png" />
+    </view>
+    <view class="acitvity-sp-add" wx:if="{{!activityId}}">
+        <image class="acitvity-sp-add-img" src="../../../images/add.png" />
+        <text class="font28 acitvity-sp-add-text" data-type="add" bindtap="onClick">添加商品</text>
+    </view>
+
+    <view class="acitvity-d-wap">
+        <view class="activity-d-cell acitvity-btm-input">
+            <view class="activity-d-star font28">没有中奖</view>
+            <input disabled="{{activityId}}" class="activity-cell-btm-input font28" value="{{pageData.losingLotteryDesc}}" data-key="losingLotteryDesc" bindinput="changeInputValue" placeholder="请填写未中奖内容，如谢谢惠顾" maxlength="30" placeholder-class="place-holder"/>
+        </view>
+    </view>
+
+    <!-- <van-action-sheet
+        show="{{ merchShow }}"
+        actions="{{ merchItem }}"
+        color="#398BFB"
+        cancel-text="取消"
+        bind:cancel="handleCancel"
+        bind:select="handleSelect"
+    /> -->
+    <van-popup
+        show="{{ merchShow }}"
+        round
+        position="bottom"
+        custom-style="height:80%"
+        z-index="200"
+    >
+        <view class="customer_view">
+            <view class="customer_info_head">
+            <label>选择商家</label>
+            <image src="/images/close2.png" bindtap="onClose"></image>
+            </view>
+            <scroll-view scroll-y="true" style="height: 700rpx" bindscrolltolower="handleBindscrolltolowerMerch">
+            <view class="add-comm-info" wx:for="{{merchItem}}" wx:key="*this" data-info="{{item}}" bindtap="handleSelect">
+                <text class="add-comm-info-text">{{item.merchName}}</text>
+            </view>
+            <view class="no-more" wx:if="{{noMore}}" style="color: #cecece;margin-top:20rpx">暂无更多数据</view>
+            </scroll-view>
+        </view>
+        <null isShowNull="{{isShowNull}}"/>
+    </van-popup>
+    <van-action-sheet show="{{ goodsShow }}" title="商品选择" bind:close="handleCancel" close-on-click-overlay="true">
+        <scroll-view scroll-y="true" style="height: 700rpx" bindscrolltolower="handleBindscrolltolower">
+            <view class="commodity-item" wx:for="{{ listItem }}" wx:key="*this" catchtap="onClick" data-type="goodsshow" data-index="{{index}}" data-value="{{item}}">
+                <image class="commodity-img" src="{{item.goodsImg}}"/>
+                <view class="commodity-right">
+                    <text class="commodity-text commodity-title font28">{{item.goodsName}}</text>
+                    <view class="commodity-text commodity-price">
+                        <text class="commodity-text-left font24">补贴金额：{{item.subsidyAmt}}</text>
+                        <text class="commodity-text font24">商品编号：{{item.goodsCode}}</text>
+                    </view>
+                    <view class="commodity-t-btm">
+                        <text class="commodity-text-left font24">兑换方式：{{item.convertType == 1 ? '线上' : '线下'}}</text>
+                        <text class="commodity-text font24">兑换周期：{{item.cycleUnitName}}</text>
+                    </view>
+                </view>
+            </view>
+            <view class="no-more" wx:if="{{noMore}}" style="color: #cecece;margin-top:20rpx">暂无更多数据</view>
+        </scroll-view>
+        <null isShowNull="{{isShowNull}}"/>
+    </van-action-sheet>
+    <view class="btn-wap">
+        <button class="btn" data-type="push" catchtap = "onClick">发布活动</button>
+    </view>
+</view>

@@ -1,0 +1,31 @@
+<view class="consumption">
+    <view class="consumption-wap">
+        <view class="consumption-item" wx:for="{{listItem}}" wx:key="*this">
+            <view class="consumption-header">
+                <image class="consumption-header-img" style="height:22rpx;" src="../../../images/order.png"/>
+                <text class="consumption-header-text font24">{{item.bookCode}}</text>
+                <text class="font24">{{item.changeTime}}</text>
+            </view>
+            <view class="consumption-content">
+                <view class="consumption-content-img">
+                    <image class="consumption-header-img" src="{{item.goodsImg}}"/>
+                </view>
+                <view class="consumption-content-right">
+                    <view class="consumption-content-cell consumption-content-top">
+                        <text  class="font28">{{item.goodsName}}</text>
+                        <text class="font28" style="margin-left: 36rpx;">￥{{item.payAmt}}</text>
+                    </view>
+                    <view class="consumption-content-cell consumption-content-btm">
+                        <text class="font28">积分{{item.integral}}</text>
+                        <view class="font24 consumption-content-flex">
+                            <image class="consumption-header-img" src="../../../images/phone.png"/>
+                            <text>{{item.userPhone}}</text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="no-more" wx:if="{{noMore}}">我是有底线的</view>
+    </view>
+    <null isShowNull="{{isShowNull}}"/>
+</view>

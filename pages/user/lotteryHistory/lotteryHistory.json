@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "tab": "../../../components/tab/tab",
+    "null": "../../../components/null/null"
+  },
+  "navigationBarTitleText": "抽奖历史"
+}

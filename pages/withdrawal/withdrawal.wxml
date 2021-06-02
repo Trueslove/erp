@@ -1,0 +1,15 @@
+<view class="withdrawal">
+    <view class="withdrawal-tab">
+        <tab tabItem="{{tabItem}}" bind:tabChange="changeTab"/>
+    </view>
+    <view class="with-content"> 
+        <view wx:for="{{listItem}}" wx:key="*this" class="with-item" data-item="{{item}}" bindtap="handleToDetailPage">
+            <h2>{{item.merchName}}</h2>
+            <text>提现账号：{{item.applyCode}}</text>
+            <text>提现金额：{{item.withdrawAmt}}</text>
+            <text>提现时间：{{item.changeDate}}</text>
+        </view>
+    </view>
+    <view class="no-more" wx:if="{{noMore}}">我是有底线的</view>
+    <null isShowNull="{{isShowNull}}"/>
+</view>

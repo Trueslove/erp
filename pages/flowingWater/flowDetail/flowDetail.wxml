@@ -1,0 +1,22 @@
+<view class="flowing-water">
+    <view class="flow-water-item">
+        <view class="flow-water-cell flow-water-month">
+            <view class="flow-water-title font32">{{info.month}}</view>
+            <view class="flow-water-content">
+                <text class="flow-water-month-text font28" style="margin-right:10rpx">总补贴￥{{info.subsidyAmt}}</text>
+                <text class="flow-water-month-text font28">总提现￥{{info.withdrawAmt}}</text>
+            </view>
+        </view>
+        <view class="flow-water-cell flow-water-day" wx:for="{{listItem}}" wx:key="*this">
+            <view class="flow-water-title font32">{{item.changeType == 1 ? '补贴' : '提现'}}</view>
+            <view class="flow-water-content">
+                <text class="font24" style="margin-right:10rpx">{{item.changeTime}}</text>
+            </view>
+            <text class="flow-detail-price" style="{{item.changeType == 1 ? 'color: #398BFB' : 'color: #303133'}}">
+                {{item.changeType == 1 ? '+' : '-'}}{{item.changeAmt}}
+            </text>
+        </view>
+    </view>
+    <view class="no-more" wx:if="{{noMore}}">我是有底线的</view>
+    <null isShowNull="{{isShowNull}}"/>
+</view>

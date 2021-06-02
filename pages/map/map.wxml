@@ -1,0 +1,8 @@
+  <view class="map">
+  <map 
+      id="map"
+      polyline="{{polyline}}"
+      markers="{{markers}}"
+      bindmarkertap="markertap">
+    </map>
+  </view>

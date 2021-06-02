@@ -1,0 +1,133 @@
+.classification .class-input {
+  height: 80rpx;
+  line-height: 80rpx;
+  color: #333;
+  font-size: 28rpx;
+  width: 80%;
+  border: 1rpx solid #F1F1F1;
+  margin: 70rpx auto;
+  padding: 0 20rpx;
+  border-radius: 6rpx;
+}
+.class-content .class-item {
+  background: #fff;
+  padding: 0 40rpx 0 28rpx;
+  font-size: 28rpx;
+  margin-bottom: 32rpx;
+}
+.class-content .class-item .class-item-parse {
+  display: flex;
+  justify-content: left;
+  height: 86rpx;
+  line-height: 86rpx;
+  align-items: center;
+}
+.class-content .class-item .class-parse-right {
+  margin-left: 14rpx;
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+}
+.class-content .class-parse-icon-wap {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.class-content .class-parse-icon-wap .class-parse-del-edit {
+  position: absolute;
+  width: 248rpx;
+  height: 84rpx;
+  line-height: 84rpx;
+  right: 0rpx;
+  top: 72rpx;
+  background: rgba(0, 0, 0, 0.56);
+  border-radius: 10rpx;
+  z-index: 1;
+  text-align: center;
+}
+.class-content .class-parse-icon-wap .class-parse-del-edit > text {
+  font-size: 28rpx;
+  font-family: PingFang-SC-Medium, PingFang-SC;
+  font-weight: 500;
+  color: #FFFFFF;
+}
+.class-content .class-parse-icon-wap .class-parse-del-edit .class-parse-del::after {
+  content: "";
+  background: #fff;
+  border: 2rpx solid #fff;
+  margin: 0 20rpx;
+}
+.class-content .class-parse-icon-wap .show-del {
+  display: block;
+}
+.class-content .class-parse-icon-wap .hidden-del {
+  display: none;
+}
+.class-content .class-parse-icon-wap .class-parse-del-edit::after {
+  content: "";
+  width: 0;
+  height: 0;
+  border-right: 15rpx solid transparent;
+  border-left: 15rpx solid transparent;
+  border-bottom: 15rpx solid rgba(0, 0, 0, 0.56);
+  position: absolute;
+  top: -15rpx;
+  right: 16rpx;
+}
+.class-content .class-parse-icon {
+  width: 56rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  background: #F1F1F1;
+  border-radius: 4rpx;
+  text-align: center;
+}
+.class-content .class-item-border {
+  border-bottom: 2rpx solid #E4E4E4;
+}
+.class-content .class-cont-add {
+  display: flex;
+  align-items: center;
+  height: 94rpx;
+}
+.class-content .class-list-item {
+  display: flex;
+  justify-content: space-between !important;
+  border-bottom: 2rpx solid #E4E4E4;
+}
+.class-content .class-list-text {
+  padding-left: 38rpx;
+  transition: all 0.5s ease;
+  display: block;
+}
+.class-content .hidden-content {
+  display: none;
+}
+.classification-content {
+  font-size: 28rpx;
+  color: #000;
+}
+.list-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  margin-bottom: 32rpx;
+  padding: 10rpx 68rpx 0 28rpx;
+}
+.list-content-top {
+  display: flex;
+  align-items: center;
+}
+.list-content-top .list-top-item {
+  display: flex;
+  justify-content: space-between;
+  flex: 1;
+}
+.class-more {
+  width: 56rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  background: #F1F1F1;
+  border-radius: 4rpx;
+}

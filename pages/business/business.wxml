@@ -1,0 +1,29 @@
+<view class="business">
+    <view class="business-tab">
+        <tab tabItem="{{tabItem}}" bind:tabChange="changeTab"/>
+    </view>
+    <view class="business-content"> 
+        <view wx:for="{{listItem}}" wx:key="*this" class="business-item" data-info="{{item}}" catchtap = "handleToPageDetail">
+            <view class="business-top">
+                <image class="business-img" src="{{item.merchLogo}}"/>
+                <view class="business-right">
+                    <view class="business-r-title">{{item.merchName}}</view>
+                    <text class="business-r-txt">联系人: {{item.linkMan}}</text>
+                    <view class="business-r-txt">
+                        <text style="margin-right:24rpx">联系电话：{{item.linkNo}}</text>
+                        <text>所属行业：{{item.industryName}}</text>
+                    </view>
+                </view>
+            </view>
+            <view class="business-bottom">
+                <text class="business-btm-text">{{item.merchAddress}}</text>
+                <image class="business-btm-img" data-address="{{item.merchAddress}}" catchtap="handleToMap" src="../../images/map.png"/>
+            </view>
+        </view>
+        <view class="no-more" wx:if="{{noMore}}">我是有底线的</view>
+    </view>
+    <null isShowNull="{{isShowNull}}"/>
+    <view class="business-footer">
+        <text class="business-footer-btn" bindtap = "handleAddToPage">添加商家</text>
+    </view>
+</view>

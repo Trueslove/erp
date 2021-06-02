@@ -1,0 +1,35 @@
+<view class="commodity">
+    <view class="search">
+        <image class="search-img" src="../../images/search.png"/>
+        <input class="search-input" bindinput="handleChangeSearch" value="{{serchValue}}" placeholder="请输入商品编码进行搜索" placeholder-style="color:#BFC2CC;"/>
+    </view>
+    <view class="commodity-content">
+        <view class="commodity-item" wx:for="{{ listItem }}" wx:key="*this">
+            <view class="commodity-top">
+                <image class="commodity-img" src="{{item.goodsImg}}"/>
+                <view class="commodity-right">
+                    <text class="commodity-text commodity-title">{{item.goodsName}}</text>
+                    <view class="commodity-text commodity-price">
+                        <text class="commodity-text commodity-btm-text">补贴金额：{{item.subsidyAmt}}</text>
+                        <text class="commodity-text commodity-btm-text">商品编号：{{item.goodsCode}}</text>
+                    </view>
+                    <view class="commodity-t-btm">
+                        <text class="commodity-text commodity-btm-text">兑换方式：{{item.convertType == 1 ? '线上' : '线下'}}</text>
+                        <text class="commodity-text commodity-btm-text">兑换周期：{{item.cycleUnitName}}</text>
+                    </view>
+                </view>
+            </view>
+            <view class="commodity-bottom">
+                <text class="commodity-btn" data-type="see" data-item="{{item}}" catchtap="onClick">查看</text>
+                <text class="commodity-btn" data-type="edit" data-item="{{item}}" catchtap="onClick">编辑</text>
+                <text class="commodity-btn" data-type="delete" data-item="{{item}}" catchtap="onClick">删除</text>
+            </view>
+        </view>
+    </view>
+    <view class="no-more" wx:if="{{noMore}}">我是有底线的</view>
+    <null isShowNull="{{isShowNull}}"/>
+    <view class="footer">
+        <van-button data-type="to" catchtap="onClick" custom-style="height: 78rpx;font-size:32rpx;border: none;color:#303133;">分类管理</van-button>
+        <van-button data-type="add" catchtap="onClick" custom-style="height: 78rpx;font-size:32rpx;background:#398BFB;color:#fff;border-radius: 8rpx;margin-right:34rpx">添加商品</van-button>
+    </view>
+</view>

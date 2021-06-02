@@ -1,0 +1,19 @@
+<view class="activity">
+    <view class="search">
+        <image class="search-img" src="../../images/search.png"/>
+        <input class="search-input" bindinput="handleSearch" value="{{serchValue}}" placeholder="请输入活动名称进行搜索" placeholder-style="color:#BFC2CC;"/>
+    </view>
+    <view class="activity-content">
+        <view wx:for="{{listItem}}" wx:key="*this" class="activit-item" data-type="detail" data-id="{{item.activityId}}" bindtap = "handleToPageDetail">
+            <text class="activity-text activity-title font32">{{item.activityName}}</text>
+            <text class="activity-text font28">{{item.activityDescription}}</text>
+            <text class="activity-text font28">{{item.address}}</text>
+            <text class="activity-text font28">活动范围{{item.activityScope}}米</text>
+        </view>
+        <view class="no-more" wx:if="{{noMore}}">我是有底线的</view>
+    </view>
+    <null isShowNull="{{isShowNull}}"/>
+    <view class="footer">
+        <van-button data-type="add" bindtap = "handleToPageDetail" custom-style="height: 78rpx;font-size:32rpx;background:#398BFB;color:#fff;border-radius: 8rpx;margin-right:34rpx">新建活动</van-button>
+    </view>
+</view>

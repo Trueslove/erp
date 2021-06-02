@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "tab": "../../components/tab/tab",
+    "van-icon": "@vant/weapp/icon/index",
+    "van-action-sheet": "@vant/weapp/action-sheet/index",
+    "van-button": "@vant/weapp/button/index",
+    "null": "../../components/null/null"
+  },
+  "navigationBarTitleText": "绑定码"
+}

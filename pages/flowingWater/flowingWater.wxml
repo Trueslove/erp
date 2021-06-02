@@ -1,0 +1,19 @@
+<view class="flowing-water">
+    <view class="flow-water-item" wx:for="{{dataList}}" wx:key="*this">
+        <view class="flow-water-cell flow-water-month">
+            <view class="flow-water-title font32">{{item.month}}</view>
+            <view class="flow-water-content">
+                <text class="flow-water-month-text font28" style="margin-right:10rpx">总补贴￥{{item.subsidyAmt}}</text>
+                <text class="flow-water-month-text font28">总提现￥{{item.withdrawAmt}}</text>
+            </view>
+        </view>
+        <view class="flow-water-cell flow-water-day" wx:for="{{item.list}}" wx:for-item="childItem" data-info="{{item}}" data-merchid="{{childItem.merchId}}" wx:key="*this" bindtap="handleToPageDetail">
+            <view class="flow-water-title font32">{{childItem.merchName}}</view>
+            <view class="flow-water-content">
+                <text class="font24" style="margin-right:10rpx">当月补贴金额￥{{childItem.subsidyAmt}}</text>
+                <text class="font24">当月提现金额￥{{childItem.withdrawAmt}}</text>
+            </view>
+        </view>
+    </view>
+    <null isShowNull="{{isShowNull}}"/>
+</view>

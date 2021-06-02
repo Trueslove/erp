@@ -1,0 +1,155 @@
+<view class="customer-detail" bindtap="onClick" style="{{customerShow ? 'z-index:1' : ''}}">
+    <view class="customer-d-header">
+        <image class="customer-d-h-img" src="{{detailData.userPhoto}}"/>
+        <view class="customer-d-h-r">
+            <text class="font32" style="color:#303133;padding-bottom:10rpx">{{detailData.userName}}</text>
+            <text class="font28" style="display:block;color:#909399;">昵称：{{detailData.userNickname}}</text>
+        </view>
+    </view>
+    <view style="margin-top:16rpx;">
+        <van-cell-group>
+            <van-field
+                value="{{ detailData.merchName }}"
+                label="商家名称"
+                placeholder="商家名称"
+                input-align="right"
+                readonly="true"
+                label-class="customer-label"
+                input-class="customer-input"
+                readonly="true"
+            />
+            <van-field
+                value="{{ detailData.userPhone }}"
+                label="联系方式"
+                placeholder="请输入客户手机号"
+                input-align="right"
+                label-class="customer-label"
+                input-class="customer-input"
+                readonly="true"
+            />
+            <van-field
+                value="{{ detailData.birthday }}"
+                label="出生日期"
+                placeholder="请输入客户出生日期"
+                input-align="right"
+                label-class="customer-label"
+                input-class="customer-input"
+                readonly="true"
+            />
+        </van-cell-group>
+        <view class="customer-address">
+            <text class="font28 customer-label" style="line-height: 90rpx;">联系地址</text>
+            <view class="font28 customer-address-text" catchtap="onClick" data-type="map" data-address="{{detailData.address}}">
+                <text>{{ detailData.userCoordinates || '我就是地址'}}</text>
+                <van-icon name="arrow" size="16" color="#949DA6"/>
+            </view>
+        </view>
+    </view>
+
+    <view style="margin-top:16rpx;">
+        <van-cell>
+            <view slot="title">
+                <view class="van-cell-text font28">个性标签</view>
+            </view>
+        </van-cell>
+        <van-cell>
+            <view class="custormer-tab">
+                <view wx:for="{{labelItem}}" wx:key="*this" class="custormer-tab-item font28" data-type="show" data-item="{{item}}" catchtap="onClick" catchlongpress="handleLongPress">
+                    <text>{{item.tagName}}</text>
+                    <image wx:if="{{show}}" data-item="{{item}}" catchtap = "delLabel" class="custormer-tab-close" src="../../../images/close1.png"/>
+                </view>
+                <view class="custormer-tab-item custormer-tab-border font28" data-type="add" catchtap="onClick">
+                    <van-icon name="plus" size="15"/>
+                </view>
+            </view>
+        </van-cell>
+    </view>
+
+    <view style="margin-top:16rpx;">
+        <van-cell
+            is-link
+            title="消费历史"
+            link-type="navigateTo"
+            url="/pages/user/consumptionHistory/consumptionHistory"
+            title-class="customer-label"
+            />
+        <van-cell
+            is-link
+            title="抽奖历史"
+            link-type="navigateTo"
+            url="/pages/user/lotteryHistory/lotteryHistory?type=0&userId={{detailData.userId}}&merchId={{detailData.merchId}}"
+            title-class="customer-label"
+            />
+        <van-cell
+            is-link
+            title="兑奖历史"
+            link-type="navigateTo"
+            url="/pages/user/lotteryHistory/lotteryHistory?type=1&userId={{detailData.userId}}&merchId={{detailData.merchId}}"
+            title-class="customer-label"
+            />
+    </view>
+
+    <van-popup
+      show="{{ showLabel }}"
+      position="bottom"
+      close-on-click-overlay="true"
+    >
+       <view class="customer-popup-label-wap">
+            <view class="customer-popup-label">
+                <van-icon data-type="label" catchtap = "onClick" name="arrow-left" />
+                <view class="customer-popup-label-search">
+                    <van-search
+                        value="{{ tagName }}"
+                        placeholder="请输入标签"
+                        use-action-slot
+                        bind:change="onChange"
+                        maxlength="4"
+                    >
+                        <view slot="action" data-type="send" bind:tap="onClick">添 加</view>
+                    </van-search>
+                </view>
+            </view>
+            <scroll-view scroll-y="true" style="height: 1000rpx" bindscrolltolower="handleBindscrolltolowerTag">
+                <view class="customer-popup-label-content">
+                    <view 
+                    data-name="{{item.tagName}}" 
+                    data-type="tagName" 
+                    catchtap = "onClick" 
+                    wx:for="{{popupItem}}" 
+                    wx:key="*this" 
+                    class="customer-popup-label-text font36">{{item.tagName}}</view>
+                    <view class="no-more" wx:if="{{noMore}}" style="color: #cecece;margin-top:20rpx">暂无更多数据</view>
+                </view>
+            </scroll-view>
+            <null isShowNull="{{isShowNull}}"/>
+       </view>
+    </van-popup>
+
+  <van-popup
+      show="{{ customerShow }}"
+      round
+      position="bottom"
+      z-index="200"
+    >
+      <view class="customer_view">
+        <view class="customer_info_head">
+          <label>{{activeTagName}}</label>
+          <image src="/images/close2.png" data-type="close" bindtap="onClick"></image>
+        </view>
+        <scroll-view scroll-y="true" style="height: 800rpx" bindscrolltolower="handleBindscrolltolowerUser">
+            <view class="customer-info" wx:for="{{merchLabelItem}}" wx:key="*this" data-type="detail" data-item="{{item}}" catchtap = "onClick">
+            <image class="customer-info-img" src="{{item.userPhoto}}"/>
+                <view class="customer-info-right">
+                    <view class="customer-info-title">{{item.userName}} {{item.userPhone}}</view>
+                    <text class="customer-info-text">商家名称： {{item.merchName}}</text>
+                </view>
+            </view>
+            <view class="no-more" wx:if="{{noMore}}" style="color: #cecece;margin-top:20rpx">暂无更多数据</view>
+        </scroll-view>
+        <null isShowNull="{{isShowNull}}"/>
+      </view>
+    </van-popup>
+   <!-- <view class="footer customer-footer">
+        <van-button bindtap="handleToAddPage" custom-style="height: 78rpx;font-size:32rpx;background:#398BFB;color:#fff;border-radius: 8rpx;margin-right:34rpx">添加客户</van-button>
+    </view> -->
+</view>

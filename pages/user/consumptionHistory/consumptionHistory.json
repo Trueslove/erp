@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "null": "../../../components/null/null"
+  },
+  "navigationBarTitleText": "消费历史"
+}

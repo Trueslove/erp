@@ -1,0 +1,211 @@
+.acitvity-detail {
+  padding-bottom: 150rpx;
+}
+.acitvity-d-wap {
+  padding: 0 24rpx;
+  background-color: #fff;
+  color: #303133;
+  margin-bottom: 16rpx;
+}
+.activity-d-cell {
+  min-height: 100rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2rpx solid #E5E5E5;
+}
+.activity-d-star::before {
+  content: "*";
+  font-size: 28rpx;
+  margin-right: 15rpx;
+  color: #F70000;
+}
+.activity-d-value {
+  text-align: right;
+  width: 504rpx;
+}
+.activity-d-flex {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.activity-d-txt {
+  color: #909399;
+}
+.activity-d-cell:last-child {
+  border: none;
+}
+.acitvity-sp-wap {
+  padding: 0 24rpx 52rpx;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #303133;
+  margin-bottom: 16rpx;
+}
+.acitvity-sp-wap .acitvity-d-sp {
+  flex: 1;
+}
+.acitvity-sp-wap .acitvity-sp-delete {
+  width: 36rpx;
+  height: 36rpx;
+  margin: 30rpx 0 0 18rpx;
+}
+.acitvity-sp-wap .activity-sp-cell {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 32rpx 0 28rpx;
+}
+.acitvity-sp-wap .activity-sp-cell .activity-sp-value {
+  display: flex;
+  align-items: center;
+}
+.acitvity-sp-wap .add-cell-wap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 24rpx;
+}
+.acitvity-sp-wap .add-cell-wap .add-cell-right {
+  display: flex;
+  align-items: center;
+}
+.acitvity-sp-wap .add-cell-wap .add-cell-right-text {
+  color: #909399;
+}
+.acitvity-sp-wap .add-cell-input {
+  width: 440rpx;
+  height: 64rpx;
+  line-height: 64rpx;
+  border: 2rpx solid #D3D3D3;
+  padding: 0 20rpx;
+  font-size: 28rpx;
+}
+.acitvity-sp-wap .add-cell-input-price {
+  position: absolute;
+  right: 10rpx;
+  font-size: 28rpx;
+  font-family: PingFang-SC-Medium, PingFang-SC;
+  font-weight: 500;
+  color: #303133;
+}
+.acitvity-sp-wap .add-cell-input-wap {
+  position: relative;
+}
+.acitvity-sp-add {
+  padding: 36rpx 24rpx;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.acitvity-sp-add .acitvity-sp-add-img {
+  width: 40rpx;
+  height: 40rpx;
+}
+.acitvity-sp-add .acitvity-sp-add-text {
+  color: #398BFB;
+}
+.activity-cell-input {
+  width: 470rpx;
+  height: 64rpx;
+  padding: 0 20rpx;
+  background: #FFFFFF;
+  border: 2rpx solid #D3D3D3;
+}
+.activity-cell-btm-input {
+  width: 504rpx;
+  height: 64rpx;
+  padding: 0 20rpx;
+  background: #FFFFFF;
+  border: 2rpx solid #D3D3D3;
+}
+.acitvity-btm-input {
+  padding: 10rpx 0;
+}
+.commodity-item {
+  background: #fff;
+  padding: 42rpx 30rpx 50rpx;
+  display: flex;
+}
+.commodity-item .commodity-text-left {
+  width: 219rpx;
+}
+.commodity-item .commodity-img {
+  margin: 0 24rpx 0 6rpx;
+  width: 144rpx;
+  height: 144rpx;
+  background: #D8D8D8;
+  border-radius: 8rpx;
+  object-fit: cover;
+}
+.commodity-item .commodity-right {
+  display: flex;
+  flex-wrap: wrap;
+  flex: 1;
+}
+.commodity-item .commodity-right .commodity-price {
+  width: 100%;
+  margin-top: 34rpx;
+  display: flex;
+  justify-content: left;
+}
+.commodity-item .commodity-right .commodity-title {
+  height: 40rpx;
+  font-size: 28rpx;
+  line-height: 40rpx;
+}
+.commodity-item .commodity-t-btm {
+  width: 100%;
+  display: flex;
+  justify-content: left;
+  margin-top: 6rpx;
+}
+.activity-d-textarea {
+  flex: 1;
+  height: 100rpx;
+  line-height: 40rpx;
+  padding: 10rpx 0 0 20rpx;
+  text-align: right;
+}
+.place-holder {
+  color: #909399 !important;
+  font-size: 28rpx;
+}
+.customer_view {
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+}
+.customer_info_head {
+  margin: 0 auto;
+  text-align: center;
+  width: 100%;
+  border-bottom: 1px solid #F8F8F8;
+  padding-top: 19px;
+  padding-bottom: 18px;
+  margin-bottom: 17px;
+  position: relative;
+}
+.customer_view label {
+  font-size: 20px;
+  color: #303133;
+  font-weight: 500;
+}
+.customer_view image {
+  height: 14px;
+  width: 13px;
+  display: inline-block;
+  margin-right: 12px;
+  margin-top: 4px;
+  position: absolute;
+  right: 0;
+}
+.add-comm-info {
+  background: #fff;
+  width: 100%;
+  height: 90rpx;
+  line-height: 90rpx;
+  text-align: center;
+}

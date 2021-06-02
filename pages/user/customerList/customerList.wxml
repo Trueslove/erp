@@ -1,0 +1,52 @@
+<view class="customer-list" style="">
+    <view class="customer-list-header">
+        <view class="business-tab">
+            <tab tabItem="{{tabItem}}" defalutIndex="{{type}}" bind:tabChange="changeTab"/>
+        </view>
+        <view class="search customer-list-search">
+            <image class="search-img" src="../../../images/search.png"/>
+            <input class="search-input" value="{{userNameOrPhone}}" bindinput="handleSearch" placeholder="请输入客户名称进行搜索备份" placeholder-style="color:#BFC2CC;"/>
+        </view>
+    </view>
+    
+    <view class="customer-list-content">
+        <view wx:for="{{listItem}}" wx:key="index" class="customer-list-item">
+            <!-- <view class="customer-checkbox" wx:if="{{type == 1}}">
+                <van-checkbox use-icon-slot value="{{ item.checked }}" data-index="{{index}}" bind:change="onChange">
+                    <image class="customer-checkbox-img" slot="icon" src="{{ item.checked ? '../../../images/checkout.png' : '../../../images/nocheckout.png' }}" />
+                </van-checkbox>
+            </view> -->
+            <view class="customer-info" data-id="{{item.userId}}" data-merchid="{{item.merchId}}" bindtap="handleToPageDetail">
+                <image class="customer-info-img" src="{{item.userPhoto}}"/>
+                <view class="customer-info-right">
+                    <view class="customer-info-title font32">{{item.userName}} {{item.userPhone}}</view>
+                    <text class="customer-info-text font28">商家名称： {{item.merchName}}</text>
+                </view>
+            </view>
+        </view>
+        <view class="no-more" wx:if="{{noMore}}">我是有底线的</view>
+    </view>
+    <null isShowNull="{{isShowNull}}"/>
+    <!-- <view class="customer-list-footer footer" wx:if="{{type == 1}}">
+        <van-checkbox value="{{ checked }}" label-class="font32" icon-size="36rpx" data-type="all" bind:change="onChange">
+            <image class="customer-checkbox-img" slot="icon" src="{{ checked ? '../../../images/checkout.png' : '../../../images/nocheckout.png' }}" />
+            <text style="color:#303133">全选</text>
+        </van-checkbox>
+        <van-button data-type="send" bindtap="onClick" custom-style="height: 78rpx;font-size:32rpx;background:#398BFB;color:#fff;border-radius: 8rpx;margin-right:34rpx">发短信</van-button>
+    </view> -->
+    <van-overlay show="{{ show }}" bind:click="onClickHide" custom-style="display: flex;align-items: center;justify-content: center;">
+        <view class="list-overlay">
+            <view class="overlay-content">
+                <view class="overlay-title font36">编辑短信</view>
+                <textarea class="overlay-textarea font32" value="" placeholder="请输入短信内容" placeholder-style="color: #BFC2CC;font-size:32rpx"> </textarea>
+                <view class="overlay-btn font36">
+                    <text data-type="confrim" catchtap="onClick">确认</text>
+                    <text data-type="close" catchtap="onClick">取消</text>
+                </view>
+            </view>
+            <view class="overlay-close">
+                <image data-type="close" bindtap = "handleClose" class="overlay-img" src="../../../images/close.png"/>
+            </view>
+        </view>
+    </van-overlay>
+</view>

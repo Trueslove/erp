@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "null": "../../components/null/null"
+  },
+  "navigationBarTitleText": "商家流水"
+}

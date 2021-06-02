@@ -1,0 +1,30 @@
+<view class="withdrawal-detail">
+    <view class="with-detail-item">
+        <h2>{{dataInfo.merchName}}</h2>
+        <text>提现姓名：{{dataInfo.auditName}}</text>
+        <text>提现账号：{{dataInfo.auditName}}</text>
+        <text>提现金额：{{dataInfo.withdrawAmt}}</text>
+        <text>提现时间：{{dataInfo.changeDate}}</text>
+    </view>
+    
+    <view class="with-detail-footer" style="{{show ? 'z-index: 0' : 'z-index: 1'}}">
+        <text class="with-detail-btn" data-type="0" bindtap="handleClickBtn">查看流水</text>
+        <text class="with-detail-btn" data-type="1" bindtap="handleClickBtn">驳回</text>
+        <text class="with-detail-btn with-btn-pass" data-type="2" bindtap="handleClickBtn">通过</text>
+    </view>
+    <van-overlay show="{{ show }}" data-type="3" custom-style="display: flex;align-items: center;justify-content: center;z-index:0">
+        <view class="list-overlay">
+            <view class="overlay-content">
+                <view class="overlay-title font36">驳回</view>
+                <textarea bindinput="handleInputChange" value="{{dismissReason}}" placeholder="请输入驳回内容" class="overlay-textarea font32" placeholder-style="color: #BFC2CC;font-size:32rpx"> </textarea>
+                <view class="overlay-btn font36">
+                    <text data-type="4" catchtap = "handleClickBtn">确认</text>
+                    <text data-type="3" catchtap = "handleClickBtn">取消</text>
+                </view>
+            </view>
+            <view class="overlay-close">
+                <image data-type="3" bindtap = "handleClickBtn" class="overlay-img" src="../../../images/close.png"/>
+            </view>
+        </view>
+    </van-overlay>
+</view>

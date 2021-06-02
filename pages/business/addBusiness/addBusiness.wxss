@@ -1,0 +1,95 @@
+/* pages/business/addBusiness/addBusiness.wxss */
+.add-business-wap {
+  padding-bottom: 160rpx;
+}
+.add-business {
+  padding-left: 24rpx;
+  background: #fff;
+}
+.add-cell-wap {
+  height: 106rpx;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  padding-right: 28rpx;
+  border-bottom: 2rpx solid #E5E5E5;
+}
+.add-cell-wap .add-cell-right {
+  display: flex;
+  align-items: center;
+}
+.add-cell-wap .add-cell-right-text {
+  color: #909399;
+}
+.add-cell-wap:last-child {
+  border: none;
+}
+.add-com-logo {
+  border-bottom: 2rpx solid #E5E5E5;
+}
+.add-business {
+  background: #fff;
+}
+.add-com-uploader {
+  height: 94rpx;
+  width: 134rpx;
+  padding-top: 40rpx;
+  background: #F7F7F7;
+  text-align: center;
+  margin: 0 0 41rpx 24rpx;
+}
+.add-com-uploader .add-uploader-text {
+  display: block;
+  height: 28rpx;
+  font-size: 20rpx;
+  font-family: PingFang-SC-Medium, PingFang-SC;
+  font-weight: 500;
+  color: #5E5E5E;
+  line-height: 28rpx;
+}
+.add-cell-input {
+  font-size: 28rpx;
+  font-family: PingFang-SC-Medium, PingFang-SC;
+  font-weight: 500;
+  color: #303133;
+  flex: 1;
+}
+.add-com-left {
+  width: 156rpx;
+}
+.add-com-title {
+  height: 74rpx;
+  font-size: 28rpx;
+  font-family: PingFang-SC-Medium, PingFang-SC;
+  font-weight: 500;
+  color: #303133;
+  line-height: 74rpx;
+}
+.add-com-img {
+  overflow: hidden;
+}
+.add-com-start::before {
+  content: "*";
+  font-size: 28rpx;
+  margin-right: 15rpx;
+  color: #F70000;
+}
+.add-business-map {
+  height: 320rpx;
+  width: 100%;
+}
+.add-cell-scan-wap {
+  justify-content: space-between;
+  padding: 0 50rpx 0 28rpx;
+  border: none;
+  margin-top: 26rpx;
+  background: #fff;
+}
+.add-business-scan {
+  width: 50rpx;
+  height: 50rpx;
+}
+.add-scan-text {
+  padding-left: 72rpx;
+  color: #909399;
+}

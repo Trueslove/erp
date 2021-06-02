@@ -1,0 +1,62 @@
+/* pages/user/customerList/customerList.wxss */
+.customer-list {
+  padding-bottom: 124rpx;
+}
+.customer-list-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+.customer-list-content {
+  border-top: 2rpx #F8F8F8 solid;
+  padding-top: 198rpx;
+}
+.customer-list-search {
+  border-top: 2rpx solid #F8F8F8;
+}
+.customer-list-item {
+  display: flex;
+  justify-content: center;
+  height: 186rpx;
+  align-items: center;
+}
+.customer-list-item .customer-checkbox {
+  width: 70rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+.customer-list-item .customer-checkbox .customer-checkbox-img {
+  width: 36rpx;
+  height: 36rpx;
+}
+.customer-list-item .customer-info {
+  flex: 1;
+  background: #fff;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding-left: 26rpx;
+}
+.customer-list-item .customer-info .customer-info-img {
+  width: 114rpx;
+  height: 114rpx;
+  background: #D8D8D8;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.customer-list-item .customer-info .customer-info-right {
+  margin-left: 14rpx;
+}
+.customer-list-item .customer-info .customer-info-right .customer-info-title {
+  color: #303133;
+  line-height: 44rpx;
+}
+.customer-list-item .customer-info .customer-info-right .customer-info-text {
+  color: #909399;
+}
+.customer-list-footer {
+  justify-content: space-between;
+  padding-left: 20rpx;
+}

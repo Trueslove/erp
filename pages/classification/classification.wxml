@@ -1,0 +1,47 @@
+<view class="classification">
+    <view class="class-content">
+        <view class="class-item" wx:for="{{ listDatas }}" wx:key="index">
+            <view class="class-item-parse" catchtap="onListClick" data-index="{{ index }}">
+                <van-icon color="#000000" name="{{selected[index] ? 'arrow-up' : 'arrow-down'}}" />
+                <view class="class-parse-right {{selected[index] ? 'class-item-border' : ''}}">
+                    <text style="font-size: 32rpx">{{ item.categoryName }}</text>
+                    <view class="class-parse-icon-wap">
+                        <view class="class-parse-del-edit {{operation == item.categoryCode ? 'show-del' : 'hidden-del'}}">
+                            <text class="class-parse-del" catchtap="handleDelete">删除</text>
+                            <text catchtap="handleRename">重命名</text>
+                        </view>
+                        <van-icon name="ellipsis" custom-class="class-parse-icon" size="20" data-type="parent" data-parentinfo="{{item}}" data-info="{{ item }}" catchtap="handleClickIcon"/>
+                    </view>
+                </view>
+            </view>
+            <view class="class-list-text {{selected[index] ? '' : 'hidden-content'}}">
+                <view wx:for="{{item.list}}" wx:for-item="childItem" wx:key="*this" class="class-item-parse class-list-item ">
+                    <text>{{ childItem.categoryName }}</text>
+                    <view class="class-parse-icon-wap">
+                        <view class="class-parse-del-edit {{operation == childItem.categoryCode ? 'show-del' : 'hidden-del'}}">
+                            <text class="class-parse-del" data-type="child" data-childreninfo="{{childItem}}" catchtap="handleDelete">删除</text>
+                            <text catchtap="handleRename">重命名</text>
+                        </view>
+                        <van-icon name="ellipsis" custom-class="class-parse-icon" size="20" data-type="child" data-parentinfo="{{item}}" data-info="{{ childItem }}" catchtap="handleClickIcon"/>
+                    </view>
+                </view>
+                <view class="class-cont-add" data-type="child" data-info="{{item}}" bindtap = "handleAddClass">
+                    <van-icon name="plus"/>
+                    <text style="color:#398BFB;margin-left:10rpx">添加子分类</text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <van-dialog
+        use-slot
+        title="{{ showTxt }}"
+        show="{{ show }}"
+        show-cancel-button
+        bind:cancel="onClose"
+        bind:confirm="handleConfirm"
+        before-close="{{beforeClose}}"
+        >
+        <input class="class-input" value="{{addValue}}" data-key="addValue" bind:change="handleChangeInput"/>
+    </van-dialog>
+    <view class="btn" data-type="parent" bindtap = "handleAddClass">添加分类</view>
+</view>

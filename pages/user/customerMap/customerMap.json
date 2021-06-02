@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "van-popup": "@vant/weapp/popup/index",
+    "null": "../../../components/null/null",
+    "scroll-views": "../../../components/scrollView/scrollView"
+  },
+  "navigationBarTitleText": "客户信息"
+}

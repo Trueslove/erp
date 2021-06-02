@@ -1,0 +1,36 @@
+/* pages/flowingWater/flowingWater.wxss */
+.flow-water-item {
+  padding-left: 38rpx;
+  background: #fff;
+  color: #303133;
+}
+.flow-water-cell {
+  padding: 24rpx 0 18rpx 0;
+}
+.flow-water-title {
+  line-height: 44rpx;
+}
+.flow-water-day {
+  border-bottom: 2rpx solid #EBEBEB;
+  color: #5E5E5E;
+  position: relative;
+}
+.flow-water-day:last-child {
+  border: none;
+}
+.flow-water-month {
+  background: #F8F8F8;
+  padding-left: 38rpx;
+  margin-left: -38rpx;
+}
+.flow-water-month-text {
+  color: #909399;
+}
+.flow-detail-price {
+  position: absolute;
+  top: 24rpx;
+  right: 30rpx;
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #303133;
+}

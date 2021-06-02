@@ -1,0 +1,70 @@
+<view class="creat-code">
+    <view class="creat-code-header">
+        <tab tabItem="{{tabItem}}" bind:tabChange="changeTab"/>
+    </view>
+    <view class="dialog-canvas-wap" wx:if="{{downShow}}">
+        <canvas canvas-id="myQrcode" style="background:#fff;width: 180px;height: 180px;" class="dialog-canvas"></canvas>
+    </view>
+    <view class="creat-code-content">
+        <view class="creat-code-item" wx:for="{{listItem}}" wx:key="index" data-type="dialogDown" data-info="{{item}}" bindtap="onClick">
+            <view class="creat-code-cell">
+                <text>绑定码： </text>
+                <text>{{item.relationId}}</text>
+            </view>
+            <view class="creat-code-cell">
+                <text>商家名称：</text>
+                <text>{{item.merchName || '暂无商家'}}</text>
+            </view>
+            <view class="creat-code-cell">
+                <text>活动名称：</text>
+                <view class="creat-code-choose">
+                    <text class="{{item.activityName ? '' : 'creat-code-laceholder'}}" data-type="active" data-info="{{item}}" catchtap="onClick">{{item.activityName || '请选择活动'}}</text>
+                    <van-icon name="arrow" size="15" color="#949DA6"/>
+                </view>
+            </view>
+        </view>
+        <view class="no-more" wx:if="{{noMore}}">我是有底线的</view>
+    </view>
+    <null isShowNull="{{isShowNull}}"/>
+    <view class="footer">
+        <van-button 
+            data-type="creat" 
+            bindtap="onClick" 
+            custom-style="height: 78rpx;font-size:32rpx;background:#398BFB;color:#fff;border-radius: 8rpx;margin-right:34rpx"
+        >生成</van-button>
+    </view>
+    <van-action-sheet show="{{ goodsShow }}" title="商品选择" bind:close="handleCancel" close-on-click-overlay="true">
+        <view class="creat-sheet-item {{activeCode == item.activityId ? 'creat-sheet-active' : ''}}" 
+            wx:for="{{ activeItem }}"
+            wx:key="*this" 
+            catchtap="onClick" 
+            data-type="goodsshow" 
+            data-info="{{item}}">
+            <view class="creat-sheet font28">活动名称：{{item.activityName}}</view>
+            <view class="creat-sheet font28">活动描述：{{item.activityName}}</view>
+        </view>
+    </van-action-sheet>
+    <view class="dialog" wx:if="{{creatShow}}">
+        <view class="dialog-rgba">
+            <view class="dialog-content-wap">
+                <view class="dialog-content" >
+                    <view class="dialog-creat-code" wx:if="{{creatShow}}">
+                        <text>生成</text>
+                        <input bindinput="handleChangeInput" value="{{num}}" type="number" class="dialog-input" />
+                        <text>个绑定码</text>
+                    </view>
+                </view>
+                <view class="dialog-footer" wx:if="{{creatShow}}">
+                    <text class="dialog-footer-btn" data-type="confirm" catchtap = "onClick">确认</text>
+                    <text class="dialog-footer-btn" data-type="cancel" catchtap = "onClick">取消</text>
+                </view>
+                <view class="dialog-footer" wx:if="{{downShow}}">
+                    <text class="dialog-footer-btn" data-type="down" catchtap = "onClick">下载</text>
+                </view>
+            </view>
+            <view class="dialog-creat-colse-wap" wx:if="{{downShow}}">
+                <image class="dialog-creat-colse" data-type="close" catchtap = "onClick" src="../../images/close.png"></image>
+            </view>
+        </view>
+    </view>
+</view>

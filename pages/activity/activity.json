@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "van-button": "@vant/weapp/button/index",
+    "null": "../../components/null/null"
+  },
+  "navigationBarTitleText": "商家活动"
+}

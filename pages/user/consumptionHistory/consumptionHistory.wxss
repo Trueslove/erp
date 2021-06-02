@@ -1,0 +1,51 @@
+/* pages/user/consumptionHistory/consumptionHistory.wxss */
+.consumption-wap {
+  padding: 0 28rpx 0 30rpx;
+  background: #fff;
+}
+.consumption-header {
+  padding: 22rpx 0 20rpx 0;
+  display: flex;
+  align-items: center;
+  color: #303133;
+}
+.consumption-header .consumption-header-text {
+  margin: 0 58rpx 0 6rpx;
+}
+.consumption-header-img {
+  width: 20rpx;
+  height: 30rpx;
+  margin-right: 4rpx;
+}
+.consumption-content {
+  display: flex;
+  padding-bottom: 24rpx;
+}
+.consumption-content .consumption-content-img {
+  width: 134rpx;
+  height: 134rpx;
+  background: #D8D8D8;
+}
+.consumption-content .consumption-content-img > image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.consumption-content .consumption-content-flex {
+  display: flex;
+  align-items: center;
+}
+.consumption-content .consumption-content-top {
+  height: 80rpx;
+}
+.consumption-content .consumption-content-btm {
+  margin-top: 20rpx;
+}
+.consumption-content .consumption-content-right {
+  flex: 1;
+  margin-left: 12rpx;
+}
+.consumption-content .consumption-content-cell {
+  display: flex;
+  justify-content: space-between;
+}
